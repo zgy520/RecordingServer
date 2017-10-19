@@ -1,9 +1,10 @@
 package com.record.server;
 
-import java.net.Inet4Address;
 import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
 
+import com.record.codes.deconders.GpsInfoDeconder;
+import com.record.handler.GpsHandler;
 import com.record.handler.RecordServerHandler;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -34,7 +35,7 @@ public class RecordServer {
 						@Override
 						protected void initChannel(SocketChannel ch) throws Exception {
 							// TODO Auto-generated method stub
-							ch.pipeline().addLast(new RecordServerHandler());
+							ch.pipeline().addLast(new GpsInfoDeconder(),new RecordServerHandler(),new GpsHandler());
 						}
 					});
 			ChannelFuture future = bootstrap.bind().sync();
