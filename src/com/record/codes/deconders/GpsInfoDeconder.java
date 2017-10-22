@@ -5,6 +5,7 @@ import java.util.List;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.util.CharsetUtil;
 
 public class GpsInfoDeconder extends ByteToMessageDecoder {
 
@@ -12,9 +13,14 @@ public class GpsInfoDeconder extends ByteToMessageDecoder {
 	protected void decode(ChannelHandlerContext arg0, ByteBuf in, List<Object> arg2) throws Exception {
 		// TODO Auto-generated method stub
 		//System.out.println("start parse GPS data from client");
-		if(in.readableBytes() > 4){
-			arg2.add(String.valueOf(in.readInt()));
-		}
+		System.out.println("Ö´ÐÐÁ¦");
+		arg2.add(in.readByte());
+	
+		
 	}
-
+	@Override
+	public void exceptionCaught(ChannelHandlerContext ctx,Throwable cause){
+		cause.printStackTrace();
+		ctx.close();
+	}
 }

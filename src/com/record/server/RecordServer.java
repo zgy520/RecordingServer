@@ -15,6 +15,9 @@ import io.netty.channel.local.LocalAddress;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 
 public class RecordServer {
 
@@ -24,10 +27,11 @@ public class RecordServer {
 	}
 	
 	public void start() throws Exception{
-		EventLoopGroup group = new NioEventLoopGroup();
+		EventLoopGroup workerGroup = new NioEventLoopGroup();
+		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		try {
 			ServerBootstrap bootstrap = new ServerBootstrap();
-			bootstrap.group(group)
+			bootstrap.group(workerGroup,bossGroup)
 					 .channel(NioServerSocketChannel.class)
 					 .localAddress(new InetSocketAddress(port))
 					 .childHandler(new ChannelInitializer<SocketChannel>() {
@@ -35,14 +39,18 @@ public class RecordServer {
 						@Override
 						protected void initChannel(SocketChannel ch) throws Exception {
 							// TODO Auto-generated method stub
-							ch.pipeline().addLast(new GpsInfoDeconder(),new RecordServerHandler(),new GpsHandler());
+							ch.pipeline().addLast(
+													new ObjectEncoder(),
+													new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+													new RecordServerHandler());
 						}
 					});
 			ChannelFuture future = bootstrap.bind().sync();
 			future.channel().closeFuture().sync();
 		} finally {
 			// TODO: handle finally clause
-			group.shutdownGracefully();
+			workerGroup.shutdownGracefully();
+			bossGroup.shutdownGracefully();
 		}
 	}
 
