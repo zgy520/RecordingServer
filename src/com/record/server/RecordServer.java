@@ -4,6 +4,7 @@ import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
 
 import com.record.codes.deconders.GpsInfoDeconder;
+import com.record.codes.deconders.ServerDecoder;
 import com.record.handler.GpsHandler;
 import com.record.handler.RecordServerHandler;
 
@@ -40,8 +41,7 @@ public class RecordServer {
 						protected void initChannel(SocketChannel ch) throws Exception {
 							// TODO Auto-generated method stub
 							ch.pipeline().addLast(
-													new ObjectEncoder(),
-													new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+													new ServerDecoder(),
 													new RecordServerHandler());
 						}
 					});

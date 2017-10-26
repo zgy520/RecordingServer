@@ -1,21 +1,37 @@
 package com.record.handler;
 
-import com.app.record.record2.model.GPS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import io.netty.buffer.ByteBuf;
+import com.zgy.data.MongodbUtil;
+import com.zgy.model.business.gps.Z_GPS;
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.CharsetUtil;
+import io.netty.util.ReferenceCountUtil;
 
 public class RecordServerHandler extends ChannelInboundHandlerAdapter {
+	private static final Logger logger = LoggerFactory.getLogger(RecordServerHandler.class);
 	@Override
 	public void channelRead(ChannelHandlerContext ctx,Object msg) {
-		GPS gps = (GPS)msg;
-		System.out.println("获取到的维度为:"+gps.getLatitude());
+		Z_GPS gps = (Z_GPS)msg;
+		//logger.info(gps.toString());
+		ReferenceCountUtil.release(msg);
+		logger.info(gps.toString());
+		MongodbUtil.insertDocument(gps);
+		
+	}
+	@Override
+	public void channelReadComplete(ChannelHandlerContext ctx){
+		
 	}
 	@Override
 	public void channelActive(ChannelHandlerContext ctx){
 		System.out.println("通道建立了");
+	}
+	@Override
+	public void channelInactive(ChannelHandlerContext ctx){
+		System.out.println("通道"+ctx.channel().id()+"断开了");
 	}
 	
 	@Override

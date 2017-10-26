@@ -1,26 +1,17 @@
 package com.record.codes.deconders;
 
-import java.util.List;
+import com.zgy.model.MessageBody;
+import com.zgy.model.business.gps.Z_GPS;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.util.CharsetUtil;
 
-public class GpsInfoDeconder extends ByteToMessageDecoder {
+public class GpsInfoDeconder {
 
-	@Override
-	protected void decode(ChannelHandlerContext arg0, ByteBuf in, List<Object> arg2) throws Exception {
-		// TODO Auto-generated method stub
-		//System.out.println("start parse GPS data from client");
-		System.out.println("执行力");
-		arg2.add(in.readByte());
-	
-		
-	}
-	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx,Throwable cause){
-		cause.printStackTrace();
-		ctx.close();
+	public static MessageBody decode(ByteBuf in)throws Exception {
+		///System.out.println("还剩余的字节数为:"+in.readableBytes());
+		MessageBody z_GPS = new Z_GPS(in.readDouble(), in.readDouble(), in.readFloat(), 
+				in.readDouble(), in.readFloat(), in.readFloat(), in.readInt(), 
+				in.readByte());
+		return z_GPS;
 	}
 }
