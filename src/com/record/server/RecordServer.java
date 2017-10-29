@@ -19,6 +19,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 
 public class RecordServer {
 
@@ -41,6 +42,7 @@ public class RecordServer {
 						protected void initChannel(SocketChannel ch) throws Exception {
 							// TODO Auto-generated method stub
 							ch.pipeline().addLast(
+													new IdleStateHandler(3, 4, 5),
 													new ServerDecoder(),
 													new RecordServerHandler());
 						}

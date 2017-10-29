@@ -1,57 +1,31 @@
-2017-10-25 22:29:37 [RecordServerHandler.java-->17] Latitude=39.046205,longitude=117.697195,Accury=29.0,Speed=0.0,Bear=0.0,LocationType=5,errorCode=0
-2017-10-25 22:29:38 [RecordServerHandler.java-->17] Latitude=39.04614284939236,longitude=117.69716362847223,Accury=1.6,Speed=1.07,Bear=171.22,LocationType=1,errorCode=0
-2017-10-25 22:29:38 [RecordServerHandler.java-->17] Latitude=39.04614284939236,longitude=117.69716362847223,Accury=1.6,Speed=1.07,Bear=171.22,LocationType=1,errorCode=0
-2017-10-25 22:29:38 [Slf4JLogger.java-->151] An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
-io.netty.channel.ChannelPipelineException: com.record.codes.deconders.ServerDecoder.handlerRemoved() has thrown an exception.
-	at io.netty.channel.DefaultChannelPipeline.callHandlerRemoved0(DefaultChannelPipeline.java:646)
-	at io.netty.channel.DefaultChannelPipeline.destroyDown(DefaultChannelPipeline.java:892)
-	at io.netty.channel.DefaultChannelPipeline.destroyUp(DefaultChannelPipeline.java:858)
-	at io.netty.channel.DefaultChannelPipeline.destroy(DefaultChannelPipeline.java:850)
-	at io.netty.channel.DefaultChannelPipeline.access$700(DefaultChannelPipeline.java:46)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelUnregistered(DefaultChannelPipeline.java:1341)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelUnregistered(AbstractChannelHandlerContext.java:181)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelUnregistered(AbstractChannelHandlerContext.java:167)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelUnregistered(DefaultChannelPipeline.java:835)
-	at io.netty.channel.AbstractChannel$AbstractUnsafe$8.run(AbstractChannel.java:830)
-	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
-	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:463)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
-	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: io.netty.util.IllegalReferenceCountException: refCnt: 0
-	at io.netty.buffer.AbstractByteBuf.ensureAccessible(AbstractByteBuf.java:1413)
-	at io.netty.buffer.AbstractByteBuf.checkReadableBytes0(AbstractByteBuf.java:1399)
-	at io.netty.buffer.AbstractByteBuf.checkReadableBytes(AbstractByteBuf.java:1388)
-	at io.netty.buffer.AbstractByteBuf.readBytes(AbstractByteBuf.java:843)
-	at io.netty.handler.codec.ByteToMessageDecoder.handlerRemoved(ByteToMessageDecoder.java:234)
-	at io.netty.channel.DefaultChannelPipeline.callHandlerRemoved0(DefaultChannelPipeline.java:640)
-	... 15 more
-2017-10-25 22:31:08 [RecordServerHandler.java-->17] Latitude=39.045269368489585,longitude=117.69734212239584,Accury=2.0,Speed=1.0,Bear=124.2,LocationType=1,errorCode=0
-2017-10-25 22:31:09 [RecordServerHandler.java-->17] Latitude=39.045269368489585,longitude=117.69734212239584,Accury=2.0,Speed=1.0,Bear=124.2,LocationType=1,errorCode=0
-2017-10-25 22:31:09 [Slf4JLogger.java-->151] An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
-io.netty.channel.ChannelPipelineException: com.record.codes.deconders.ServerDecoder.handlerRemoved() has thrown an exception.
-	at io.netty.channel.DefaultChannelPipeline.callHandlerRemoved0(DefaultChannelPipeline.java:646)
-	at io.netty.channel.DefaultChannelPipeline.destroyDown(DefaultChannelPipeline.java:892)
-	at io.netty.channel.DefaultChannelPipeline.destroyUp(DefaultChannelPipeline.java:858)
-	at io.netty.channel.DefaultChannelPipeline.destroy(DefaultChannelPipeline.java:850)
-	at io.netty.channel.DefaultChannelPipeline.access$700(DefaultChannelPipeline.java:46)
-	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelUnregistered(DefaultChannelPipeline.java:1341)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelUnregistered(AbstractChannelHandlerContext.java:181)
-	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelUnregistered(AbstractChannelHandlerContext.java:167)
-	at io.netty.channel.DefaultChannelPipeline.fireChannelUnregistered(DefaultChannelPipeline.java:835)
-	at io.netty.channel.AbstractChannel$AbstractUnsafe$8.run(AbstractChannel.java:830)
-	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
-	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:463)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
-	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: io.netty.util.IllegalReferenceCountException: refCnt: 0
-	at io.netty.buffer.AbstractByteBuf.ensureAccessible(AbstractByteBuf.java:1413)
-	at io.netty.buffer.AbstractByteBuf.checkReadableBytes0(AbstractByteBuf.java:1399)
-	at io.netty.buffer.AbstractByteBuf.checkReadableBytes(AbstractByteBuf.java:1388)
-	at io.netty.buffer.AbstractByteBuf.readBytes(AbstractByteBuf.java:843)
-	at io.netty.handler.codec.ByteToMessageDecoder.handlerRemoved(ByteToMessageDecoder.java:234)
-	at io.netty.channel.DefaultChannelPipeline.callHandlerRemoved0(DefaultChannelPipeline.java:640)
-	... 15 more
+2017-10-29 09:48:14 [RecordServerHandler.java-->20] Latitude=39.02900363498264,longitude=117.70578450520833,Accury=2.8,Speed=0.0,Bear=104.84,LocationType=1,errorCode=0
+2017-10-29 09:48:14 [RecordServerHandler.java-->20] Latitude=39.02900363498264,longitude=117.70578450520833,Accury=2.8,Speed=0.0,Bear=104.84,LocationType=1,errorCode=0
+2017-10-29 09:48:14 [RecordServerHandler.java-->20] Latitude=39.02899685329861,longitude=117.70579454210069,Accury=2.9,Speed=0.0,Bear=104.84,LocationType=1,errorCode=0
+2017-10-29 09:48:15 [RecordServerHandler.java-->20] Latitude=39.02899685329861,longitude=117.70579454210069,Accury=2.9,Speed=0.0,Bear=104.84,LocationType=1,errorCode=0
+2017-10-29 09:48:15 [RecordServerHandler.java-->20] Latitude=39.02899685329861,longitude=117.70579454210069,Accury=2.9,Speed=0.0,Bear=104.84,LocationType=1,errorCode=0
+2017-10-29 09:48:15 [RecordServerHandler.java-->20] Latitude=39.02900390625,longitude=117.70581298828125,Accury=2.9,Speed=1.05,Bear=108.06,LocationType=1,errorCode=0
+2017-10-29 09:48:16 [RecordServerHandler.java-->20] Latitude=39.02900390625,longitude=117.70581298828125,Accury=2.9,Speed=1.05,Bear=108.06,LocationType=1,errorCode=0
+2017-10-29 09:48:16 [RecordServerHandler.java-->20] Latitude=39.02900390625,longitude=117.70581298828125,Accury=2.9,Speed=1.05,Bear=108.06,LocationType=1,errorCode=0
+2017-10-29 09:48:16 [RecordServerHandler.java-->20] Latitude=39.02900065104166,longitude=117.70582628038194,Accury=2.9,Speed=1.02,Bear=113.18,LocationType=1,errorCode=0
+2017-10-29 09:48:17 [RecordServerHandler.java-->20] Latitude=39.02900065104166,longitude=117.70582628038194,Accury=2.9,Speed=1.02,Bear=113.18,LocationType=1,errorCode=0
+2017-10-29 09:48:17 [RecordServerHandler.java-->20] Latitude=39.02900065104166,longitude=117.70582628038194,Accury=2.9,Speed=1.02,Bear=113.18,LocationType=1,errorCode=0
+2017-10-29 09:48:17 [RecordServerHandler.java-->20] Latitude=39.029010687934026,longitude=117.70583821614584,Accury=2.9,Speed=0.98,Bear=104.76,LocationType=1,errorCode=0
+2017-10-29 09:48:18 [RecordServerHandler.java-->20] Latitude=39.029010687934026,longitude=117.70583821614584,Accury=2.9,Speed=0.98,Bear=104.76,LocationType=1,errorCode=0
+2017-10-29 09:48:18 [RecordServerHandler.java-->20] Latitude=39.029010687934026,longitude=117.70583821614584,Accury=2.9,Speed=0.98,Bear=104.76,LocationType=1,errorCode=0
+2017-10-29 09:48:18 [RecordServerHandler.java-->20] Latitude=39.02900553385417,longitude=117.7058433702257,Accury=2.9,Speed=0.95,Bear=113.76,LocationType=1,errorCode=0
+2017-10-29 09:48:19 [RecordServerHandler.java-->20] Latitude=39.02900553385417,longitude=117.7058433702257,Accury=2.9,Speed=0.95,Bear=113.76,LocationType=1,errorCode=0
+2017-10-29 09:48:19 [RecordServerHandler.java-->20] Latitude=39.02900553385417,longitude=117.7058433702257,Accury=2.9,Speed=0.95,Bear=113.76,LocationType=1,errorCode=0
+2017-10-29 09:48:20 [RecordServerHandler.java-->20] Latitude=39.02900065104166,longitude=117.70584988064236,Accury=2.9,Speed=0.91,Bear=113.56,LocationType=1,errorCode=0
+2017-10-29 09:48:20 [RecordServerHandler.java-->20] Latitude=39.02900065104166,longitude=117.70584988064236,Accury=2.9,Speed=0.91,Bear=113.56,LocationType=1,errorCode=0
+2017-10-29 09:48:20 [RecordServerHandler.java-->20] Latitude=39.02900065104166,longitude=117.70584988064236,Accury=2.9,Speed=0.91,Bear=113.56,LocationType=1,errorCode=0
+2017-10-29 09:48:20 [RecordServerHandler.java-->20] Latitude=39.028995496961805,longitude=117.70586154513889,Accury=2.9,Speed=0.9,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:21 [RecordServerHandler.java-->20] Latitude=39.028995496961805,longitude=117.70586154513889,Accury=2.9,Speed=0.9,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:21 [RecordServerHandler.java-->20] Latitude=39.028995496961805,longitude=117.70586154513889,Accury=2.9,Speed=0.9,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:21 [RecordServerHandler.java-->20] Latitude=39.02899061414931,longitude=117.70586832682292,Accury=3.0,Speed=0.0,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:22 [RecordServerHandler.java-->20] Latitude=39.02899061414931,longitude=117.70586832682292,Accury=3.0,Speed=0.0,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:22 [RecordServerHandler.java-->20] Latitude=39.02899061414931,longitude=117.70586832682292,Accury=3.0,Speed=0.0,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:22 [RecordServerHandler.java-->20] Latitude=39.028978949652775,longitude=117.70586995442709,Accury=3.0,Speed=0.0,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:22 [RecordServerHandler.java-->20] Latitude=39.028978949652775,longitude=117.70586995442709,Accury=3.0,Speed=0.0,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:22 [RecordServerHandler.java-->20] Latitude=39.028978949652775,longitude=117.70586995442709,Accury=3.0,Speed=0.0,Bear=111.3,LocationType=1,errorCode=0
+2017-10-29 09:48:23 [RecordServerHandler.java-->20] Latitude=39.02897054036458,longitude=117.70587646484375,Accury=2.9,Speed=0.87,Bear=124.12,LocationType=1,errorCode=0
+2017-10-29 09:48:24 [RecordServerHandler.java-->20] Latitude=39.02897054036458,longitude=117.70587646484375,Accury=2.9,Speed=0.87,Bear=124.12,LocationType=1,errorCode=0
