@@ -7,6 +7,7 @@ import java.util.List;
 import com.zgy.model.MessageBody;
 import com.zgy.model.MessageCommand;
 import com.zgy.model.MessageHeader;
+import com.zgy.model.mobile.MobileHeaderMessage;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -51,7 +52,7 @@ public class ServerDecoder extends ByteToMessageDecoder {
 	}
 	
 	private boolean decodeHeader(ByteBuf headerIn) {
-		msgHeader = new MessageHeader(headerIn.readInt());
+		msgHeader = new MobileHeaderMessage(headerIn.readInt());
 		LEN_BODY = headerIn.readInt() - LEN_MESSAGEHEADER;  //消息体的长度：由消息的总长度减去消息头的长度
 		msgHeader.setMessageSequence(headerIn.readShort());
 		msgHeader.setMessageVersion(headerIn.readShort());

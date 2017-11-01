@@ -6,6 +6,7 @@ import java.net.NetworkInterface;
 import com.record.codes.deconders.GpsInfoDeconder;
 import com.record.codes.deconders.ServerDecoder;
 import com.record.handler.GpsHandler;
+import com.record.handler.HeartbeatServerHandler;
 import com.record.handler.RecordServerHandler;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -43,6 +44,7 @@ public class RecordServer {
 							// TODO Auto-generated method stub
 							ch.pipeline().addLast(
 													new IdleStateHandler(3, 4, 5),
+													new HeartbeatServerHandler(),
 													new ServerDecoder(),
 													new RecordServerHandler());
 						}
@@ -56,5 +58,5 @@ public class RecordServer {
 		}
 	}
 
-	private final static int port = 8089;  //设置监听的端口号
+	private final static int port = 6869;  //设置监听的端口号
 }
